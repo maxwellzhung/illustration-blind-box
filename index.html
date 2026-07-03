@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>免费插画灵感素材库</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23242424'/%3E%3Cpath d='M14 43 26 23l10 14 6-8 8 14H14Z' fill='%2394b49f'/%3E%3Ccircle cx='43' cy='21' r='6' fill='%23e9c46a'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow">ILLUSTRATION INSPIRATION BOARD</p>
+          <h1 id="page-title">免费插画灵感素材库</h1>
+          <p>
+            收集免费的优质插画来源，作为找风格、看构图、提炼配色和积累创作提示词的灵感素材。
+            下载和商用前保留原站入口，方便复核最新授权。
+          </p>
+        </div>
+        <div class="hero-actions" aria-label="灵感素材操作">
+          <button id="collect-all" class="primary" type="button">收集当前灵感</button>
+          <button id="export-json" class="secondary" type="button">导出灵感清单</button>
+        </div>
+      </section>
+
+      <section class="dashboard" aria-label="灵感素材总览">
+        <article>
+          <span>已收藏</span>
+          <strong id="saved-count">0</strong>
+        </article>
+        <article>
+          <span>灵感来源</span>
+          <strong id="total-count">0</strong>
+        </article>
+        <article>
+          <span>商用友好</span>
+          <strong id="commercial-count">0</strong>
+        </article>
+        <article>
+          <span>素材格式</span>
+          <strong id="format-count">0</strong>
+        </article>
+      </section>
+
+      <section class="workspace">
+        <aside class="filters" aria-label="筛选条件">
+          <label for="search">搜索灵感</label>
+          <input id="search" type="search" placeholder="输入风格、用途或网站名" />
+
+          <label for="style-filter">插画风格</label>
+          <select id="style-filter">
+            <option value="all">全部风格</option>
+            <option value="flat">扁平矢量</option>
+            <option value="handdrawn">手绘线稿</option>
+            <option value="characters">人物角色</option>
+            <option value="editorial">编辑叙事</option>
+            <option value="3d">3D / 立体</option>
+          </select>
+
+          <label for="license-filter">使用提醒</label>
+          <select id="license-filter">
+            <option value="all">全部来源</option>
+            <option value="commercial">可商用友好</option>
+            <option value="attribution">可能需署名</option>
+            <option value="check">需逐项复核</option>
+          </select>
+
+          <div class="saved-panel">
+            <div>
+              <span>我的灵感库</span>
+              <strong id="library-count">0 个来源</strong>
+            </div>
+            <button id="clear-library" type="button">清空</button>
+          </div>
+        </aside>
+
+        <section class="results" aria-labelledby="results-title">
+          <div class="section-head">
+            <div>
+              <h2 id="results-title">灵感来源卡</h2>
+              <p id="result-note">已整理为可浏览、收藏和复制关键词的插画灵感卡。</p>
+            </div>
+            <button id="copy-links" type="button">复制灵感关键词</button>
+          </div>
+          <div id="resource-grid" class="resource-grid"></div>
+        </section>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="./script.js"></script>
+  </body>
+</html>
