@@ -3,95 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>免费插画灵感素材库</title>
-    <link
-      rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23242424'/%3E%3Cpath d='M14 43 26 23l10 14 6-8 8 14H14Z' fill='%2394b49f'/%3E%3Ccircle cx='43' cy='21' r='6' fill='%23e9c46a'/%3E%3C/svg%3E"
-    />
+    <title>插画抽卡盲盒</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <main class="app">
-      <section class="hero" aria-labelledby="page-title">
-        <div class="hero-copy">
-          <p class="eyebrow">ILLUSTRATION INSPIRATION BOARD</p>
-          <h1 id="page-title">免费插画灵感素材库</h1>
-          <p>
-            收集免费的优质插画来源，作为找风格、看构图、提炼配色和积累创作提示词的灵感素材。
-            下载和商用前保留原站入口，方便复核最新授权。
-          </p>
+      <section class="draw-panel" aria-labelledby="game-title">
+        <div class="topbar">
+          <div><p id="eyebrow" class="eyebrow">ILLUSTRATION BLIND BOX</p><h1 id="game-title">插画抽卡盲盒</h1></div>
+          <div class="language-toggle" aria-label="Language"><button class="lang-btn is-active" type="button" data-lang="zh">中文</button><button class="lang-btn" type="button" data-lang="en">EN</button></div>
+          <div id="wallet" class="wallet" aria-label="当前画券数量"><span id="currency-label">画券</span><strong id="credits">1200</strong><button id="daily-bonus" class="daily-bonus" type="button">今日补给 +300</button></div>
         </div>
-        <div class="hero-actions" aria-label="灵感素材操作">
-          <button id="collect-all" class="primary" type="button">收集当前灵感</button>
-          <button id="export-json" class="secondary" type="button">导出灵感清单</button>
-        </div>
+        <div class="machine" aria-live="polite"><div class="halo"></div><article id="featured-card" class="art-card is-empty"><div id="featured-art" class="card-art"></div><div class="card-copy"><span id="featured-rarity" class="rarity">等待抽取</span><h2 id="featured-name">未知插画</h2><p id="featured-desc">投入画券，打开一张原创插画盲盒卡。</p></div></article></div>
+        <div class="pity-board" aria-label="抽取进度"><div><span id="epic-label">史诗保底</span><strong id="epic-pity">10</strong></div><div><span id="legendary-label">传说保底</span><strong id="legendary-pity">40</strong></div><div><span id="total-label">总抽数</span><strong id="total-draws">0</strong></div></div>
+        <div class="actions"><button id="draw-one" class="primary" type="button">抽 1 张 <span>100</span></button><button id="draw-ten" class="secondary" type="button">十连抽取 <span>900</span></button></div>
+        <div id="rates" class="rates" aria-label="抽取概率"></div>
       </section>
-
-      <section class="dashboard" aria-label="灵感素材总览">
-        <article>
-          <span>已收藏</span>
-          <strong id="saved-count">0</strong>
-        </article>
-        <article>
-          <span>灵感来源</span>
-          <strong id="total-count">0</strong>
-        </article>
-        <article>
-          <span>商用友好</span>
-          <strong id="commercial-count">0</strong>
-        </article>
-        <article>
-          <span>素材格式</span>
-          <strong id="format-count">0</strong>
-        </article>
-      </section>
-
-      <section class="workspace">
-        <aside class="filters" aria-label="筛选条件">
-          <label for="search">搜索灵感</label>
-          <input id="search" type="search" placeholder="输入风格、用途或网站名" />
-
-          <label for="style-filter">插画风格</label>
-          <select id="style-filter">
-            <option value="all">全部风格</option>
-            <option value="flat">扁平矢量</option>
-            <option value="handdrawn">手绘线稿</option>
-            <option value="characters">人物角色</option>
-            <option value="editorial">编辑叙事</option>
-            <option value="3d">3D / 立体</option>
-          </select>
-
-          <label for="license-filter">使用提醒</label>
-          <select id="license-filter">
-            <option value="all">全部来源</option>
-            <option value="commercial">可商用友好</option>
-            <option value="attribution">可能需署名</option>
-            <option value="check">需逐项复核</option>
-          </select>
-
-          <div class="saved-panel">
-            <div>
-              <span>我的灵感库</span>
-              <strong id="library-count">0 个来源</strong>
-            </div>
-            <button id="clear-library" type="button">清空</button>
-          </div>
-        </aside>
-
-        <section class="results" aria-labelledby="results-title">
-          <div class="section-head">
-            <div>
-              <h2 id="results-title">灵感来源卡</h2>
-              <p id="result-note">已整理为可浏览、收藏和复制关键词的插画灵感卡。</p>
-            </div>
-            <button id="copy-links" type="button">复制灵感关键词</button>
-          </div>
-          <div id="resource-grid" class="resource-grid"></div>
-        </section>
+      <section class="side-panel" aria-labelledby="collection-title">
+        <div class="tabs" role="tablist" aria-label="游戏面板"><button class="tab is-active" type="button" data-tab="results">本次抽取</button><button class="tab" type="button" data-tab="collection">收藏册</button></div>
+        <div id="results-panel" class="panel is-active"><div class="panel-head"><h2 id="results-title">抽取结果</h2><p id="result-note">还没有抽卡，第一张会有仪式感。</p></div><div id="result-summary" class="result-summary" hidden></div><div id="results-grid" class="mini-grid empty-state"><p id="empty-results">点击抽取后，这里会展示新获得的插画。</p></div></div>
+        <div id="collection-panel" class="panel"><div class="panel-head"><h2 id="collection-title">插画册</h2><p><span id="owned-count">0</span>/<span id="total-count">0</span> <span id="collected-label">已收集</span></p></div><div class="filter-bar" aria-label="收藏筛选"><button class="filter is-active" type="button" data-filter="all">全部</button><button class="filter" type="button" data-filter="owned">已拥有</button><button class="filter" type="button" data-filter="rare">稀有+</button><button class="filter" type="button" data-filter="epic">史诗+</button></div><div id="collection-grid" class="mini-grid"></div></div>
       </section>
     </main>
-
-    <div id="toast" class="toast" role="status" aria-live="polite"></div>
-    <script src="./script.js"></script>
+    <dialog id="card-dialog" class="card-dialog"><button id="dialog-close" class="dialog-close" type="button">关闭</button><div id="dialog-art" class="dialog-art" aria-hidden="true"></div><div class="dialog-body"><span id="dialog-rarity" class="rarity">普通</span><h2 id="dialog-name">插画名</h2><p id="dialog-desc">插画描述</p><dl><div><dt id="dialog-code-label">编号</dt><dd id="dialog-code">--</dd></div><div><dt id="dialog-count-label">拥有</dt><dd id="dialog-count">0</dd></div></dl></div></dialog>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div><script src="./script.js"></script>
   </body>
 </html>
